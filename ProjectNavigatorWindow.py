@@ -63,6 +63,8 @@ class MyApplication(Gtk.Application):
     def do_startup(self):
         Gtk.Application.do_startup(self)
 
+'''
 app = MyApplication()
 exit_status = app.run(sys.argv)
 sys.exit(exit_status)
+'''

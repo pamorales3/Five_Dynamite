@@ -5,7 +5,7 @@ from gi.repository import Gtk
 class PCAP(Gtk.Window):
 
     def __init__(self):
-        Gtk.Window.__init__(self, title="Project Import")
+        Gtk.Window.__init__(self, title="PCAP")
 
         # Creates Big Box
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)

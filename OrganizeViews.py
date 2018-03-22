@@ -5,7 +5,7 @@ from gi.repository import Gtk
 class OrganizeViews(Gtk.Window):
 
     def __init__(self):
-        Gtk.Window.__init__(self, title="Workspace Launcher")
+        Gtk.Window.__init__(self, title="Organize Views")
 
         # Creates Big Box
         self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
@@ -14,6 +14,9 @@ class OrganizeViews(Gtk.Window):
         # Top Box         
         vbox_top = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
         vbox_top.set_homogeneous(False)
+
+        # Hide and Show Box 
+        vbox_hsTop = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
 
         # Middle Box
         vbox_middle = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
@@ -40,6 +43,7 @@ class OrganizeViews(Gtk.Window):
         vbox_middle.pack_start(vbox_center_2, True, True, 5)
         vbox_middle.pack_start(vbox_center_3, True, True, 5)
         self.box.pack_start(vbox_top, True, True, 5)
+        self.box.pack_start(vbox_hsTop, True, True, 5)
         self.box.pack_start(vbox_middle, True, True, 5)
         self.box.pack_start(vbox_bottom, True, True, 5)
 
@@ -49,19 +53,19 @@ class OrganizeViews(Gtk.Window):
         vbox_top.pack_start(label, True, True, 5)
 
         # Empty Label
-        emptyLabel = Gtk.Label("   ")
+        emptyLabel = Gtk.Label("                               ")
         emptyLabel.set_justify(Gtk.Justification.CENTER)
-        vbox_center_1.pack_start(emptyLabel, True, True, 5)
+        vbox_hsTop.pack_start(emptyLabel, True, True, 5)
 
         # Hide Label
         hideLabel = Gtk.Label("Hide")
         hideLabel.set_justify(Gtk.Justification.CENTER)
-        vbox_center_2.pack_start(hideLabel, True, True, 5)
+        vbox_hsTop.pack_start(hideLabel, True, True, 5)
 
         # Show Label
         showLabel = Gtk.Label("Show")
         showLabel.set_justify(Gtk.Justification.CENTER)
-        vbox_center_3.pack_start(showLabel, True, True, 5)
+        vbox_hsTop.pack_start(showLabel, True, True, 5)
 
 
         # Project Navigation Label
@@ -69,16 +73,17 @@ class OrganizeViews(Gtk.Window):
         projectLabel.set_justify(Gtk.Justification.RIGHT)
         vbox_center_1.pack_start(projectLabel, True, True, 5)
 
-        # Project Navigation Hide Radio Button 
-        projectHideButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
-        projectHideButton.connect("toggled", self.on_project_nav_toggled, "Hide")
-        vbox_center_2.pack_start(projectHideButton, False, False, 5)
-
         # Project Navigation Show Radio Button
-        projectShowButton = Gtk.RadioButton.new_from_widget(projectHideButton)
+        projectShowButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
         projectShowButton.set_label("")
         projectShowButton.connect("toggled", self.on_project_nav_toggled, "Show")
         vbox_center_3.pack_start(projectShowButton, False, False, 5)
+
+        # Project Navigation Hide Radio Button 
+        projectHideButton = Gtk.RadioButton.new_from_widget(projectShowButton)
+        projectHideButton.connect("toggled", self.on_project_nav_toggled, "Hide")
+        vbox_center_2.pack_start(projectHideButton, False, False, 8)
+
         
 
         # Dissector Building Area Label
@@ -86,16 +91,17 @@ class OrganizeViews(Gtk.Window):
         dissectorBLabel.set_justify(Gtk.Justification.RIGHT)
         vbox_center_1.pack_start(dissectorBLabel, True, True, 5)
 
-        # Dissector Building Area Hide Radio Button 
-        dissectorBAHideButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
-        dissectorBAHideButton.connect("toggled", self.on_dissector_builder_toggled, "Hide")
-        vbox_center_2.pack_start(dissectorBAHideButton, False, False, 5)
-
         # Dissector Building Area Show Radio Button
-        dissectorBAShowButton = Gtk.RadioButton.new_from_widget(dissectorBAHideButton)
+        dissectorBAShowButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
         dissectorBAShowButton.set_label("")
         dissectorBAShowButton.connect("toggled", self.on_dissector_builder_toggled, "Show")
         vbox_center_3.pack_start(dissectorBAShowButton, False, False, 5)
+
+        # Dissector Building Area Hide Radio Button 
+        dissectorBAHideButton = Gtk.RadioButton.new_from_widget(dissectorBAShowButton)
+        dissectorBAHideButton.connect("toggled", self.on_dissector_builder_toggled, "Hide")
+        vbox_center_2.pack_start(dissectorBAHideButton, False, False, 7)
+
 
 
         # Palette Label
@@ -103,16 +109,16 @@ class OrganizeViews(Gtk.Window):
         paletteLabel.set_justify(Gtk.Justification.RIGHT)
         vbox_center_1.pack_start(paletteLabel, True, True, 5)
 
-        # Palette Hide Radio Button 
-        paletteHideButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
-        paletteHideButton.connect("toggled", self.on_palette_toggled, "Hide")
-        vbox_center_2.pack_start(paletteHideButton, False, False, 5)
-
         # Palette Show Radio Button
-        paletteShowButton = Gtk.RadioButton.new_from_widget(paletteHideButton)
+        paletteShowButton = Gtk.RadioButton.new_with_label_from_widget(None, "") 
         paletteShowButton.set_label("")
         paletteShowButton.connect("toggled", self.on_palette_toggled, "Show")
         vbox_center_3.pack_start(paletteShowButton, False, False, 5)
+
+        # Palette Hide Radio Button 
+        paletteHideButton = Gtk.RadioButton.new_from_widget(paletteShowButton)
+        paletteHideButton.connect("toggled", self.on_palette_toggled, "Hide")
+        vbox_center_2.pack_start(paletteHideButton, False, False, 7)
 
         
         # Packet Stream Area Label
@@ -120,16 +126,16 @@ class OrganizeViews(Gtk.Window):
         packetSALabel.set_justify(Gtk.Justification.RIGHT)
         vbox_center_1.pack_start(packetSALabel, True, True, 5)
 
-        # Packet Stream Area Hide Radio Button 
-        packetSAHideButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
-        packetSAHideButton.connect("toggled", self.on_packet_stream_toggled, "Hide")
-        vbox_center_2.pack_start(packetSAHideButton, False, False, 5)
-
         # Packet Stream Area Show Radio Button
-        packetSAShowButton = Gtk.RadioButton.new_from_widget(packetSAHideButton)
+        packetSAShowButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
         packetSAShowButton.set_label("")
         packetSAShowButton.connect("toggled", self.on_packet_stream_toggled, "Show")
         vbox_center_3.pack_start(packetSAShowButton, False, False, 5)
+
+        # Packet Stream Area Hide Radio Button 
+        packetSAHideButton = Gtk.RadioButton.new_from_widget(packetSAShowButton)
+        packetSAHideButton.connect("toggled", self.on_packet_stream_toggled, "Hide")
+        vbox_center_2.pack_start(packetSAHideButton, False, False, 5)
         
 
         # Dissected Stream Area Label
@@ -137,16 +143,16 @@ class OrganizeViews(Gtk.Window):
         dissectedSALabel.set_justify(Gtk.Justification.RIGHT)
         vbox_center_1.pack_start(dissectedSALabel, True, True, 5)
 
-        # Dissected Stream Area Hide Radio Button 
-        dissectedSAHideButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
-        dissectedSAHideButton.connect("toggled", self.on_dissected_stream_toggled, "Hide")
-        vbox_center_2.pack_start(dissectedSAHideButton, False, False, 5)
-
         # Dissected Stream Area Show Radio Button
-        dissectedSAShowButton = Gtk.RadioButton.new_from_widget(dissectedSAHideButton)
+        dissectedSAShowButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
         dissectedSAShowButton.set_label("")
         dissectedSAShowButton.connect("toggled", self.on_dissected_stream_toggled, "Show")
         vbox_center_3.pack_start(dissectedSAShowButton, False, False, 5)
+
+        # Dissected Stream Area Hide Radio Button 
+        dissectedSAHideButton = Gtk.RadioButton.new_from_widget(dissectedSAShowButton)
+        dissectedSAHideButton.connect("toggled", self.on_dissected_stream_toggled, "Hide")
+        vbox_center_2.pack_start(dissectedSAHideButton, False, False, 10)
         
         
         # Raw Data Area Label
@@ -154,16 +160,16 @@ class OrganizeViews(Gtk.Window):
         rawDALabel.set_justify(Gtk.Justification.RIGHT)
         vbox_center_1.pack_start(rawDALabel, True, True, 5)
 
-         # Raw Data Area Hide Radio Button 
-        rawDAHideButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
-        rawDAHideButton.connect("toggled", self.on_raw_data_toggled, "Hide")
-        vbox_center_2.pack_start(rawDAHideButton, False, False, 5)
-
         # Raw Data Area Show Radio Button
-        rawDAShowButton = Gtk.RadioButton.new_from_widget(rawDAHideButton)
+        rawDAShowButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
         rawDAShowButton.set_label("")
         rawDAShowButton.connect("toggled", self.on_raw_data_toggled, "Show")
         vbox_center_3.pack_start(rawDAShowButton, False, False, 5)
+
+        # Raw Data Area Hide Radio Button 
+        rawDAHideButton = Gtk.RadioButton.new_from_widget(rawDAShowButton)
+        rawDAHideButton.connect("toggled", self.on_raw_data_toggled, "Hide")
+        vbox_center_2.pack_start(rawDAHideButton, False, False, 3)
 
         
         # Console Area Label
@@ -171,16 +177,17 @@ class OrganizeViews(Gtk.Window):
         consoleAreaLabel.set_justify(Gtk.Justification.RIGHT)
         vbox_center_1.pack_start(consoleAreaLabel, True, True, 5)
 
-        # Console Area Hide Radio Button 
-        consoleAreaHideButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
-        consoleAreaHideButton.connect("toggled", self.on_console_area_toggled, "Hide")
-        vbox_center_2.pack_start(consoleAreaHideButton, False, False, 5)
-        
         # Console Area Show Radio Button
-        consoleAreaShowButton = Gtk.RadioButton.new_from_widget(consoleAreaHideButton)
+        consoleAreaShowButton = Gtk.RadioButton.new_with_label_from_widget(None, "")
         consoleAreaShowButton.set_label("")
         consoleAreaShowButton.connect("toggled", self.on_console_area_toggled, "Show")
         vbox_center_3.pack_start(consoleAreaShowButton, False, False, 5)
+
+        # Console Area Hide Radio Button 
+        consoleAreaHideButton = Gtk.RadioButton.new_from_widget(consoleAreaShowButton)
+        consoleAreaHideButton.connect("toggled", self.on_console_area_toggled, "Hide")
+        vbox_center_2.pack_start(consoleAreaHideButton, False, False, 12)
+        
 
 
         # Restore to Default Button
