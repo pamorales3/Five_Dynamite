@@ -69,8 +69,9 @@ class StartFieldWindow(Gtk.Window):
         vbox_center_2.pack_start(dependencyPatEntry, True, True, 5)  
 
 
-
+'''
 win = StartFieldWindow()
 win.connect("delete-event", Gtk.main_quit)
 win.show_all()
 Gtk.main()
+'''

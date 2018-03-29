@@ -4,15 +4,11 @@ from gi.repository import Gtk
 import MenuSection
 import sys
 
+# Menu Section Window Classes
+import WorkspaceLauncher, NewProject, DissectorScript, ProjectImport, ProjectExport, PCAP, OrganizeViews, SaveProject
 
-import WorkspaceLauncher
-import NewProject
-import DissectorScript
-import ProjectImport
-import ProjectExport
-import PCAP
-import OrganizeViews
-import SaveProject
+# Construct and Field Window Classes
+import StartFieldWindow, FieldWindow, EndFieldWindow
 
 
 
@@ -207,17 +203,40 @@ class ProtocolDissectorGeneratorSystem(Gtk.Window):
         table = Gtk.Table(16, 2, True)
         
         fieldLabel = Gtk.Label("Field")
+
         button1 = Gtk.Button(label="Start Label")
+        button1.connect("clicked", self.on_start_field_clicked)
+
         button2 = Gtk.Button(label="Field (1 byte)")
+        button2.connect("clicked", self.on_field_clicked)
+
         button3 = Gtk.Button(label="Field (2 byte)")
+        button3.connect("clicked", self.on_field_clicked)
+
         button4 = Gtk.Button(label="Field (4 byte)")
+        button4.connect("clicked", self.on_field_clicked)
+
         button5 = Gtk.Button(label="Field (8 byte)")
+        button5.connect("clicked", self.on_field_clicked)
+
         button6 = Gtk.Button(label="Field (16 byte)")
+        button6.connect("clicked", self.on_field_clicked)
+
         button7 = Gtk.Button(label="Field (32 byte)")
+        button7.connect("clicked", self.on_field_clicked)
+
         button8 = Gtk.Button(label="Field (64 byte)")
+        button8.connect("clicked", self.on_field_clicked)
+
         button9 = Gtk.Button(label="Field (Var size)")
+        button9.connect("clicked", self.on_field_clicked)
+
         button10 = Gtk.Button(label="End Field")
+        button10.connect("clicked", self.on_end_field_clicked)
+
         button11 = Gtk.Button(label="Reference List")
+        button11.connect("clicked", self.on_reference_list_clicked)
+
         button12 = Gtk.Button(label="Packet Info.")
 
         constructLabel = Gtk.Label("Construct")
@@ -266,6 +285,26 @@ class ProtocolDissectorGeneratorSystem(Gtk.Window):
 
 
         paletteBox.pack_start(table, True, True, 0)
+
+    def on_start_field_clicked(self, button1):
+        win = StartFieldWindow.StartFieldWindow()
+        win.connect("delete-event", Gtk.main_quit)
+        win.show_all()
+        Gtk.main()
+
+    def on_end_field_clicked(self, button10):
+        win = EndFieldWindow.EndFieldWindow()
+        win.connect("delete-event", Gtk.main_quit)
+        win.show_all()
+        Gtk.main()
+
+    def on_field_clicked(self, button2):
+        win = FieldWindow.FieldWindow()
+        win.connect("delete-event", Gtk.main_quit)
+        win.show_all()
+        Gtk.main()
+
+    
 
         '''
         ////////////////////////////////////////////////////////////////////////////////////

@@ -88,8 +88,9 @@ class ReferenceListFieldWindow(Gtk.Window):
     def on_add_button_clicked(self, button):
         print("\"Add\" button was pressed, adding another field.")
 
-
+'''
 win = ReferenceListFieldWindow()
 win.connect("delete-event", Gtk.main_quit)
 win.show_all()
 Gtk.main()
+'''

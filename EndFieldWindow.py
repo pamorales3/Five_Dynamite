@@ -7,7 +7,9 @@ class EndFieldWindow(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="End Field")
 
+'''
 win = EndFieldWindow()
 win.connect("delete-event", Gtk.main_quit)
 win.show_all()
 Gtk.main()
+'''
