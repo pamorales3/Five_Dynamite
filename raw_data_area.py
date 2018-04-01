@@ -11,7 +11,7 @@ class ListApp(tk.Frame):
 
         #tk.Label(self, text="This is a listbox").pack()
 
-        list_items = ["0000   00 1c 26 26 66 a2 00 0e  8e 04 d0 9e 08 00 45 00    ..&&f... ......E.",
+        packet_data = ["0000   00 1c 26 26 66 a2 00 0e  8e 04 d0 9e 08 00 45 00    ..&&f... ......E.",
                       '0010   00 99 00 00 40 00 40 11  b8 e6 c0 a8 00 01 c0 a8    ....@.@. ........',
                       '0020   00 1c 00 35 f5 98 00 85  98 5a cf 1f 81 80 00 01    ...5.... .Z......',
                       '0030   00 06 00 00 00 00 03 77  77 77 03 63 6e 6e 03 63    .......w ww.cnn.c',
@@ -20,8 +20,8 @@ class ListApp(tk.Frame):
         self.listbox = tk.Listbox(self, selectmode='extended', bg='white')
         self.listbox.pack(fill='both',expand=True)
 
-        for l in list_items:
-            self.listbox.insert('end', l)
+        for data in packet_data:
+            self.listbox.insert('end', data)
 
 
 if __name__ == '__main__':
