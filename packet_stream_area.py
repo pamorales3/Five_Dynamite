@@ -21,33 +21,46 @@ packets_list = [("366", "11.767290", "192.168.0.31", "192.168.0.28", "SNMP", "ge
                 ("390", "12.413611", "64.236.91.21", "192.168.0.28", "TCP", "[TCP segment of a reassembled PDU]"),
                 ("391", "12.414386", "64.236.91.21", "192.168.0.28", "TCP", "[TCP segment of a reassembled PDU]")]
 
-treeview['columns'] = ('Time','Source','Destination','Protocol','Info')
+treeview['columns'] = ('No.','Time','Source','Destination','Protocol','Info')
 
 #set up heading and column for the parent tree view: No.
-treeview.heading('#0',text='No.',anchor='w')
-treeview.column('#0',anchor='w', width=15)
+treeview.heading('No.',text='No.',anchor='w')
+treeview.column('No.',anchor='w', width=75)
 
 #set up heading and column for 'Time'
 treeview.heading('Time', text='Time')
-treeview.column('Time',anchor='center',width=25)
+treeview.column('Time',anchor='w',width=100)
 
 #set up heading and column for 'Source'
 treeview.heading('Source', text='Source')
-treeview.column('Source',anchor='center',width=100)
+treeview.column('Source',anchor='w',width=100)
 
 #set up heading and column for 'Destination'
 treeview.heading('Destination', text='Destination')
-treeview.column('Destination',anchor='center',width=100)
+treeview.column('Destination',anchor='w',width=100)
 
 #set up heading and column for 'Protocol'
 treeview.heading('Protocol', text='Protocol')
-treeview.column('Protocol',anchor='center',width=25)
+treeview.column('Protocol',anchor='w',width=100)
 
 #set up heading and column for 'Info'
 treeview.heading('Info', text='Info')
-treeview.column('Info',anchor='center',width=300)
+treeview.column('Info',anchor='w',width=400)
 
+#Make this treeview into a grid
+#treeview.grid(sticky = (N,S,E,W))
+#Configure row and column sizes
+#root.grid_rowconfigure(0, weight=1)
+#root.grid_columnconfigure(0, weight=1)
 
+#populate table
+
+#this should fill out the first row on the table, but it doesn't
+#treeview.insert('','end',values=(packets_list[0])
+
+#Comment line 59 and uncomment lines 62 and 63. I get weird error :(
+for packet in packets_list:
+    treeview.insert('','end',values=((packet[0]),(packet[1]),(packet[2]),(packet[3]),(packet[4]),(packet[5])))
 
 
 
