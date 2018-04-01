@@ -3,7 +3,7 @@ import ttk
 
 root = Tk()
 root.title('Packet Stream Area')
-root.minsize(800,200)
+root.minsize(1100,200)
 treeview = ttk.Treeview(root)
 treeview.pack(fill='both',expand=True)
 
@@ -22,6 +22,9 @@ packets_list = [("366", "11.767290", "192.168.0.31", "192.168.0.28", "SNMP", "ge
                 ("391", "12.414386", "64.236.91.21", "192.168.0.28", "TCP", "[TCP segment of a reassembled PDU]")]
 
 treeview['columns'] = ('No.','Time','Source','Destination','Protocol','Info')
+
+#supress the unused identifier column (first column) and keep it out of view
+treeview['show'] = 'headings'
 
 #set up heading and column for the parent tree view: No.
 treeview.heading('No.',text='No.',anchor='w')
