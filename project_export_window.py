@@ -20,6 +20,7 @@ class App(tk.Frame):
                                    font="system 14 bold",justify='left',aspect=800)
         window_prompt.pack(pady=(15,0))
 
+        #a frame on the window to put widgets on
         dialog_frame = tk.Frame(self)
         dialog_frame.pack(padx=20,pady=15,anchor='w')
 

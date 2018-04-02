@@ -50,21 +50,12 @@ treeview.column('Protocol',anchor='w',width=100)
 treeview.heading('Info', text='Info')
 treeview.column('Info',anchor='w',width=400)
 
-#Make this treeview into a grid
-#treeview.grid(sticky = (N,S,E,W))
-#Configure row and column sizes
-#root.grid_rowconfigure(0, weight=1)
-#root.grid_columnconfigure(0, weight=1)
-
 #populate table
-
-#this should fill out the first row on the table, but it doesn't
-#treeview.insert('','end',values=(packets_list[0])
-
-#Comment line 59 and uncomment lines 62 and 63. I get weird error :(
 for packet in packets_list:
-    treeview.insert('','end',values=((packet[0]),(packet[1]),(packet[2]),(packet[3]),(packet[4]),(packet[5])))
+       treeview.insert('','end',values=((packet[0]),(packet[1]),(packet[2]),(packet[3]),(packet[4]),(packet[5])))
 
+if(packets_list[0][4] == 'SNMP'):
+    print ('SNMP in first packet')
 
 
 mainloop()

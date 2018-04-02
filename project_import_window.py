@@ -35,7 +35,7 @@ class App(tk.Frame):
         button_frame = tk.Frame(self)
         button_frame.pack(padx=15,pady=(0,15),anchor='e')
 
-        cancel_button = tk.Button(button_frame,text='Cancel')
+        cancel_button = tk.Button(button_frame,text='Cancel', command=self.cancel_clicked)
         cancel_button.pack(side='right')
 
         import_button = tk.Button(button_frame,text='Import',height = 1,width=6,command=self.import_clicked,default='active')
