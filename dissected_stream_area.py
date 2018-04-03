@@ -1,21 +1,18 @@
 import Tkinter as tk
-import AppKit
+import ttk
 
 class DissectedStreamArea(tk.Frame):
-    def __init__(self,master):
-        tk.Frame.__init__(self,master)
-        self.pack(fill='both',expand=True)
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
         self.master.title('Dissected Stream Area')
         self.master.minsize(800,200)
-        treeview = tk.Treeview(self)
-
-
+        treeview = ttk.Treeview(root)
+        treeview.pack(fill='both',expand=True);
+        treeview.config()
         #Top level ' ' (no name) root node
         #parent, index in the tree, id for item
-
         treeview.insert('', '0','UDP',text = 'User Datagram Protocol, src Port: domain(53), Dst Port: 62872 (62872)')
         treeview.insert('', '1','DNS',text = 'Domain Name System (response)')
-
         #end adds it to the end of all the items in the same heirarchy (' ' in this case)
         treeview.insert('', 'end','item3',text = 'Third Item')
 
@@ -39,7 +36,8 @@ class DissectedStreamArea(tk.Frame):
         treeview.insert('cnn','1','type', text='Type: A (Host address)')
         treeview.insert('cnn','2','class', text='Class: IN (0x0001)')
 
+
 if __name__ == '__main__':
     root = tk.Tk()
-    dissectedStreamArea = DissectedStreamArea(root)
-    dissectedStreamArea.mainloop()
+    dissected_area = DissectedStreamArea(root)
+    dissected_area.mainloop()
