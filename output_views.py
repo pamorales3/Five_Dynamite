@@ -1,4 +1,5 @@
 import Tkinter as tk
+import dissected_stream_area as dsa
 import ttk
 
 class OutputView(tk.Frame):
@@ -24,6 +25,12 @@ class OutputView(tk.Frame):
 
         console_area_tab = ttk.Frame(notebook)
         notebook.add(console_area_tab,text="Console Area")
+
+    def create_dissected_stream_area(self):
+        root = tk.Tk()
+        stream_area = dsa.DissectedStreamArea(root)
+        stream_area.mainloop()
+
 
 
 

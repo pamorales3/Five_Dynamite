@@ -6,9 +6,9 @@ class DissectedStreamArea(tk.Frame):
         tk.Frame.__init__(self, master)
         self.master.title('Dissected Stream Area')
         self.master.minsize(800,200)
-        treeview = ttk.Treeview(root)
+        treeview = ttk.Treeview(self.master)
         treeview.pack(fill='both',expand=True);
-        treeview.config()
+        #treeview.config()
         #Top level ' ' (no name) root node
         #parent, index in the tree, id for item
         treeview.insert('', '0','UDP',text = 'User Datagram Protocol, src Port: domain(53), Dst Port: 62872 (62872)')

@@ -13,29 +13,47 @@ class Palette(tk.Frame):
         component_frame = tk.Frame(self,highlightbackground = 'blue', highlightcolor='blue',highlightthickness=1)
         component_frame.pack(fill='both',expand=True)
 
-        field_frame = tk.Frame(component_frame, width=200,height=300,highlightbackground = 'green', highlightcolor='green',highlightthickness=1)
-        field_frame.pack(padx=10,pady=15,anchor='center')
-
         self.folder_image = tk.PhotoImage(file="open_folder_icon.gif")
         self.folder_image = self.folder_image.subsample(10, 10)
 
-        folder_label = tk.Label(field_frame, image=self.folder_image)
-        folder_label.grid(row=0,column=0)
+        field_title_button = tk.Button(component_frame,text='Field',font='System 14 bold',command=self.field_title_button_clicked(component_frame))
+        field_title_button.pack()
+        field_title_button.config(image=self.folder_image,compound='left')
 
-        field_label = tk.Label(field_frame,text="Field", font='System 14 bold')
-        field_label.grid(row=0,column=1)
+        construct_title_button = tk.Button(component_frame,text='Construct',font='System 14 bold', command=self.construct_title_button_clicked)
+        construct_title_button.pack()
+        construct_title_button.config(image=self.folder_image, compound='left')
 
-        startfield_button = tk.Button(field_frame,text='Start Field')
-        startfield_button.grid(row=1,column=0)
+        #construct_frame = tk.Frame(component_frame, highlightbackground = 'green', highlightcolor='green',highlightthickness=1)
+        #construct_frame.pack(padx=20,pady=15,anchor='center')
 
-        fieldbyte1_button = tk.Button(field_frame,text='Field 1 Byte')
-        fieldbyte1_button.grid(row =1, column=1)
+#        construct_label = tk.Label(construct_frame,text='Construct',font='System 14 bold')
+ #       construct_label.grid(row=0,column=0)
 
-        fieldbyte2_button = tk.Button(field_frame,text='Field 2 Byte')
-        fieldbyte2_button.grid(row=2,column=0)
+    def field_title_button_clicked(self, component_frame):
+        print('Field title button was clicked!')
+        self.set_up_fields_frame(self,component_frame)
+        #self.master.destroy()
 
-        fieldbyte4_button = tk.Button(field_frame,text='Field 4 Byte')
-        fieldbyte4_button.grid(row=2,column=1)
+    def construct_title_button_clicked(self, event=None):
+        print('Construct title button was clicked!')
+
+    def set_up_fields_frame(self, component_frame):
+        field_frame = tk.Frame(component_frame, width=200, height=300, highlightbackground='green',
+                               highlightcolor='green', highlightthickness=1)
+        field_frame.pack(padx=10, pady=15, anchor='center')
+
+        startfield_button = tk.Button(field_frame, text='Start Field')
+        startfield_button.grid(row=1, column=0)
+
+        fieldbyte1_button = tk.Button(field_frame, text='Field 1 Byte')
+        fieldbyte1_button.grid(row=1, column=1)
+
+        fieldbyte2_button = tk.Button(field_frame, text='Field 2 Byte')
+        fieldbyte2_button.grid(row=2, column=0)
+
+        fieldbyte4_button = tk.Button(field_frame, text='Field 4 Byte')
+        fieldbyte4_button.grid(row=2, column=1)
 
         fieldbyte8_button = tk.Button(field_frame, text='Field 8 Byte')
         fieldbyte8_button.grid(row=3, column=0)
@@ -60,18 +78,6 @@ class Palette(tk.Frame):
 
         packetInfo_button = tk.Button(field_frame, text='Packet Info')
         packetInfo_button.grid(row=6, column=1)
-
-        construct_frame = tk.Frame(component_frame, highlightbackground = 'green', highlightcolor='green',highlightthickness=1)
-        construct_frame.pack(padx=20,pady=15,anchor='center')
-
-        construct_label = tk.Label(construct_frame,text='Construct',font='System 14 bold')
-        construct_label.grid(row=0,column=0)
-
-
-
-
-
-
 
 
 

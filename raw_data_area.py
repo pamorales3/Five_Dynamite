@@ -1,8 +1,6 @@
 import Tkinter as tk
-import ttk
-import AppKit
 
-class ListApp(tk.Frame):
+class RawData(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         self.master.title('Raw Data Area')
@@ -28,6 +26,5 @@ if __name__ == '__main__':
     #info = AppKit.NSBundle.mainBundle().infoDictionary()
     #info['LSUIElement']=True
     root = tk.Tk()
-    app=ListApp(root)
-    AppKit.NSApplication.sharedApplication().activateIgnoringOtherApps_(True)
+    app=RawData(root)
     app.mainloop()

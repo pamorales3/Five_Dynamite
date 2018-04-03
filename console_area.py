@@ -22,7 +22,6 @@ class ConsoleApp(tk.Frame):
 
 if __name__ == '__main__':
     #info = AppKit.NSBundle.mainBundle().infoDictionary()
-    #info['LSUIElement']=True
     root = tk.Tk()
     app=ConsoleApp(root)
     AppKit.NSApplication.sharedApplication().activateIgnoringOtherApps_(True)
